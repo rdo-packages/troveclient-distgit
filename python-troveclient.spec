@@ -1,5 +1,5 @@
 Name:           python-troveclient
-Version:        1.0.7
+Version:        1.0.9
 Release:        1%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
@@ -7,17 +7,19 @@ License:        ASL 2.0
 URL:            http://www.openstack.org/
 Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
 
-Patch0001: 0001-Remove-runtime-dependency-on-python-pbr.patch
-
 BuildArch:      noarch
  
 BuildRequires:  python2-devel
+BuildRequires:  python-oslo-sphinx
 BuildRequires:  python-setuptools
 BuildRequires:  python-sphinx
 BuildRequires:  python-requests
 BuildRequires:  python-pbr
 
 Requires:       python-argparse
+Requires:       python-keystoneclient
+Requires:       python-oslo-utils
+Requires:       python-pbr
 Requires:       python-prettytable
 Requires:       python-requests
 Requires:       python-setuptools
@@ -46,11 +48,6 @@ implements 100% (or less ;) ) of the Trove API.
 
 %prep
 %setup -q -n %{name}-%{version}
-
-%patch0001 -p1
-
-# We provide version like this in order to remove runtime dep on pbr
-sed -i s/REDHATTROVECLIENTVERSION/%{version}/ troveclient/__init__.py
 
 # Remove bundled egg-info
 rm -rf %{name}.egg-info
@@ -99,6 +96,9 @@ rm -rf html/.{doctrees,buildinfo}
 %{_bindir}/trove
 
 %changelog
+* Tue Mar 31 2015 Haikel Guemar <hguemar@fedoraproject.org> 1.0.9-1
+- Update to upstream 1.0.9
+
 * Mon Oct 13 2014 Jakub Ruzicka <jruzicka@redhat.com> 1.0.7-1
 - Update to upstream 1.0.7
 
