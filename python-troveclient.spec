@@ -1,6 +1,6 @@
 Name:           python-troveclient
 Version:        1.0.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
 License:        ASL 2.0
@@ -96,6 +96,9 @@ rm -rf html/.{doctrees,buildinfo}
 %{_bindir}/trove
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.9-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Tue Mar 31 2015 Haikel Guemar <hguemar@fedoraproject.org> 1.0.9-1
 - Update to upstream 1.0.9
 
