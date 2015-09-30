@@ -1,6 +1,6 @@
 Name:           python-troveclient
-Version:        1.0.9
-Release:        2%{?dist}
+Version:        1.3.0
+Release:        1%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
 License:        ASL 2.0
@@ -8,7 +8,7 @@ URL:            http://www.openstack.org/
 Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
- 
+
 BuildRequires:  python2-devel
 BuildRequires:  python-oslo-sphinx
 BuildRequires:  python-setuptools
@@ -96,6 +96,9 @@ rm -rf html/.{doctrees,buildinfo}
 %{_bindir}/trove
 
 %changelog
+* Wed Sep 30 2015 Matthias Runge <mrunge@redhat.com> - 1.3.0-1
+- update to 1.3.0
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.9-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
