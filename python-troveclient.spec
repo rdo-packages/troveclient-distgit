@@ -1,20 +1,21 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           python-troveclient
-Version:        1.3.0
-Release:        2%{?dist}
+Version:        2.1.1
+Release:        1%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
 License:        ASL 2.0
 URL:            http://www.openstack.org/
-Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}%{?milestone}.tar.gz
 
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python-oslo-sphinx
 BuildRequires:  python-setuptools
 BuildRequires:  python-sphinx
 BuildRequires:  python-requests
 BuildRequires:  python-pbr
+BuildRequires:  python-oslo-sphinx
 
 Requires:       python-argparse
 Requires:       python-keystoneclient
@@ -47,7 +48,7 @@ troveclient module), and a command-line script (trove). Each
 implements 100% (or less ;) ) of the Trove API.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{upstream_version}
 
 # Remove bundled egg-info
 rm -rf %{name}.egg-info
@@ -87,50 +88,14 @@ rm -rf html/.{doctrees,buildinfo}
 %files
 %doc html README.rst LICENSE
 %if 0%{?rhel} == 6
-%{python_sitelib}/python_troveclient-%{version}-py?.?.egg-info
+%{python_sitelib}/python_troveclient-*.egg-info
 %{python_sitelib}/troveclient
 %else
-%{python2_sitelib}/python_troveclient-%{version}-py?.?.egg-info
+%{python2_sitelib}/python_troveclient-*.egg-info
 %{python2_sitelib}/troveclient
 %endif
 %{_bindir}/trove
 
 %changelog
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
-
-* Wed Sep 30 2015 Matthias Runge <mrunge@redhat.com> - 1.3.0-1
-- update to 1.3.0
-
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.9-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-* Tue Mar 31 2015 Haikel Guemar <hguemar@fedoraproject.org> 1.0.9-1
-- Update to upstream 1.0.9
-
-* Mon Oct 13 2014 Jakub Ruzicka <jruzicka@redhat.com> 1.0.7-1
-- Update to upstream 1.0.7
-
-* Mon Jun 16 2014 Jakub Ruzicka <jruzicka@redhat.com> 1.0.5-1
-- Update to upstream 1.0.5
-- Add missing dependencies
-- Align .spec file with other *client packages
-- Remove now unneeded python-spinx10 conditionals
-
-* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.3-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
-
-* Thu May 08 2014 Matthias Runge <mrunge@redhat.com> - 1.0.3-2
-- remove runtime dep to pbr
-
-* Fri Dec 06 2013 Matthias Runge <mrunge@redhat.com> - 1.0.3-1
-- upgrade to 1.0.3
-
-* Tue Sep 17 2013 Matthias Runge <mrunge@redhat.com> - 0.1.4-3
-- also build on EPEL6
-
-* Thu Sep 12 2013 Matthias Runge <mrunge@redhat.com> - 0.1.4-2
-- change {__python} to {__python2}
-
-* Thu Sep 12 2013 Matthias Runge <mrunge@redhat.com> - 0.1.4-1
-- Initial package.
+* Wed Mar 23 2016 RDO <rdo-list@redhat.com> 2.1.1-0.1
+-  Rebuild for Mitaka 2.1.1
