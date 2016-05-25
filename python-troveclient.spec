@@ -6,7 +6,7 @@ Summary:        Client library for OpenStack DBaaS API
 
 License:        ASL 2.0
 URL:            http://www.openstack.org/
-Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}%{?milestone}.tar.gz
+Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 
 BuildArch:      noarch
 
