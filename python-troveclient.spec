@@ -1,6 +1,6 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           python-troveclient
-Version:        2.1.1
+Version:        2.1.2
 Release:        1%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
@@ -97,5 +97,8 @@ rm -rf html/.{doctrees,buildinfo}
 %{_bindir}/trove
 
 %changelog
+* Wed May 25 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.1.2-1
+- Update to 2.1.2
+
 * Wed Mar 23 2016 RDO <rdo-list@redhat.com> 2.1.1-0.1
 -  Rebuild for Mitaka 2.1.1
