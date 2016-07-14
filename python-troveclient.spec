@@ -7,7 +7,7 @@
 
 Name:           python-troveclient
 Version:        2.1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
 License:        ASL 2.0
@@ -158,6 +158,9 @@ PYTHONPATH=. %{__python3} setup.py test
 %endif
 
 %changelog
+* Thu Jul 14 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 2.1.2-2
+- Add python3 subpackage (RHBZ#1309310)
+
 * Wed May 25 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.1.2-1
 - Update to 2.1.2
 
