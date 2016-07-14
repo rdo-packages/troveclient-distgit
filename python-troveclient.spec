@@ -1,4 +1,10 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
+%global sname troveclient
+%if 0%{?fedora}
+%global with_python3 1
+%endif
+
 Name:           python-troveclient
 Version:        XXX
 Release:        XXX
@@ -10,15 +16,34 @@ Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_versio
 
 BuildArch:      noarch
 
+
+%description
+This is a client for the Trove API. There's a Python API (the
+troveclient module), and a command-line script (trove). Each
+implements 100% (or less ;) ) of the Trove API.
+
+
+%package -n python2-%{sname}
+Summary:        Client library for OpenStack DBaaS API
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-sphinx
 BuildRequires:  python-requests
 BuildRequires:  python-pbr
 BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-oslotest
+BuildRequires:  python-mock
+BuildRequires:  python-testtools
+BuildRequires:  python-testrepository
+BuildRequires:  python-keystoneclient
+BuildRequires:  python-swiftclient
+BuildRequires:  python-simplejson
+BuildRequires:  python-httplib2
+BuildRequires:  python-requests-mock
 
-Requires:       python-argparse
+Requires:       python-babel
 Requires:       python-keystoneclient
+Requires:       python-swiftclient
 Requires:       python-oslo-utils
 Requires:       python-pbr
 Requires:       python-prettytable
@@ -27,25 +52,52 @@ Requires:       python-setuptools
 Requires:       python-simplejson
 Requires:       python-six
 
-# required for tests
-# tests currently disabled due missing deps
-#BuildRequires:  python-pep8
-#BuildRequires:  pyflakes
-# currently under review
-# https://bugzilla.redhat.com/show_bug.cgi?id=839056
-# BuildRequires:  python-flake8
+%{?python_provide:%python_provide python2-%{sname}}
 
-# Currently under review
-# https://bugzilla.redhat.com/show_bug.cgi?id=958007
-# BuildRequires:  python-hacking
-#BuildRequires: python-mock
-#BuildRequires: python-testtools
-#BuildRequires: python-testrepository
-
-%description
+%description -n python2-%{sname}
 This is a client for the Trove API. There's a Python API (the
 troveclient module), and a command-line script (trove). Each
 implements 100% (or less ;) ) of the Trove API.
+
+
+%if 0%{?with_python3}
+%package -n python3-%{sname}
+Summary:        Client library for OpenStack DBaaS API
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-sphinx
+BuildRequires:  python3-requests
+BuildRequires:  python3-pbr
+BuildRequires:  python3-oslo-sphinx
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-mock
+BuildRequires:  python3-testtools
+BuildRequires:  python3-testrepository
+BuildRequires:  python3-keystoneclient
+BuildRequires:  python3-swiftclient
+BuildRequires:  python3-simplejson
+BuildRequires:  python3-httplib2
+BuildRequires:  python3-requests-mock
+
+Requires:       python3-babel
+Requires:       python3-keystoneclient
+Requires:       python3-swiftclient
+Requires:       python3-oslo-utils
+Requires:       python3-pbr
+Requires:       python3-prettytable
+Requires:       python3-requests
+Requires:       python3-setuptools
+Requires:       python3-simplejson
+Requires:       python3-six
+
+%{?python_provide:%python_provide python3-%{sname}}
+
+%description -n python3-%{sname}
+This is a client for the Trove API. There's a Python API (the
+troveclient module), and a command-line script (trove). Each
+implements 100% (or less ;) ) of the Trove API.
+%endif
+
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
@@ -56,44 +108,53 @@ rm -rf %{name}.egg-info
 # Let RPM handle the requirements
 rm -f {test-,}requirements.txt
 
-# Generate html docs
-#export PYTHONPATH="$( pwd ):$PYTHONPATH"
-sphinx-build -b html doc/source html
-
-# Remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
-
 
 %build
-%if 0%{?rhel} == 6
-%{__python} setup.py build
-%else
-%{__python2} setup.py build
+%py2_build
+%if 0%{?with_python3}
+%py3_build
 %endif
+
+%{__python2} setup.py build_sphinx
 
 
 %install
-%if 0%{?rhel} == 6
-%{__python} setup.py install --skip-build --root %{buildroot}
-%else
-%{__python2} setup.py install --skip-build --root %{buildroot}
+%if 0%{?with_python3}
+%py3_install
+mv %{buildroot}%{_bindir}/trove %{buildroot}%{_bindir}/trove-%{python3_version}
+ln -s ./trove-%{python3_version} %{buildroot}%{_bindir}/trove-3
 %endif
 
-# currently disabling tests
-# see buildrequires
-#%check
-#%{__python2} setup.py test
+%py2_install
+mv %{buildroot}%{_bindir}/trove %{buildroot}%{_bindir}/trove-%{python2_version}
+ln -s ./trove-%{python2_version} %{buildroot}%{_bindir}/trove-2
+
+ln -s ./trove-2 %{buildroot}%{_bindir}/trove
 
 
-%files
-%doc html README.rst LICENSE
-%if 0%{?rhel} == 6
-%{python_sitelib}/python_troveclient-*.egg-info
-%{python_sitelib}/troveclient
-%else
+%check
+PYTHONPATH=. %{__python2} setup.py test
+%if 0%{?with_python3}
+rm -rf .testrepository
+PYTHONPATH=. %{__python3} setup.py test
+%endif
+
+
+%files -n python2-%{sname}
+%doc doc/build/html README.rst
+%license LICENSE
 %{python2_sitelib}/python_troveclient-*.egg-info
 %{python2_sitelib}/troveclient
-%endif
+%{_bindir}/trove-2*
 %{_bindir}/trove
+
+%if 0%{?with_python3}
+%files -n python3-%{sname}
+%doc doc/build/html README.rst
+%license LICENSE
+%{python3_sitelib}/python_troveclient-*.egg-info
+%{python3_sitelib}/troveclient
+%{_bindir}/trove-3*
+%endif
 
 %changelog
