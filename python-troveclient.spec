@@ -36,6 +36,7 @@ BuildRequires:  python-mock
 BuildRequires:  python-testtools
 BuildRequires:  python-testrepository
 BuildRequires:  python-keystoneclient
+BuildRequires:  python-mistralclient
 BuildRequires:  python-swiftclient
 BuildRequires:  python-simplejson
 BuildRequires:  python-httplib2
@@ -44,6 +45,7 @@ BuildRequires:  python-crypto
 
 Requires:       python-babel
 Requires:       python-keystoneclient
+Requires:       python-mistralclient
 Requires:       python-swiftclient
 Requires:       python-oslo-utils
 Requires:       python-pbr
@@ -75,6 +77,7 @@ BuildRequires:  python3-mock
 BuildRequires:  python3-testtools
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-keystoneclient
+BuildRequires:  python3-mistralclient
 BuildRequires:  python3-swiftclient
 BuildRequires:  python3-simplejson
 BuildRequires:  python3-httplib2
@@ -83,6 +86,7 @@ BuildRequires:  python3-crypto
 
 Requires:       python3-babel
 Requires:       python3-keystoneclient
+Requires:       python3-mistralclient
 Requires:       python3-swiftclient
 Requires:       python3-oslo-utils
 Requires:       python3-pbr
