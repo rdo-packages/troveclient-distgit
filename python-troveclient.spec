@@ -35,6 +35,7 @@ BuildRequires:  python-oslotest
 BuildRequires:  python-mock
 BuildRequires:  python-testtools
 BuildRequires:  python-testrepository
+BuildRequires:  python-keystoneauth1
 BuildRequires:  python-keystoneclient
 BuildRequires:  python-mistralclient
 BuildRequires:  python-swiftclient
@@ -44,9 +45,11 @@ BuildRequires:  python-requests-mock
 BuildRequires:  python-crypto
 
 Requires:       python-babel
+Requires:       python-keystoneauth1
 Requires:       python-keystoneclient
 Requires:       python-mistralclient
 Requires:       python-swiftclient
+Requires:       python-oslo-i18n
 Requires:       python-oslo-utils
 Requires:       python-pbr
 Requires:       python-prettytable
