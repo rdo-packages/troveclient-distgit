@@ -1,8 +1,9 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname troveclient
+# FIXME(jpena): we need python3-openstackclient and python3-mistralclient
 %if 0%{?fedora}
-%global with_python3 1
+%global with_python3 0
 %endif
 
 Name:           python-troveclient
