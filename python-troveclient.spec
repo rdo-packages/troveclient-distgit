@@ -46,12 +46,13 @@ BuildRequires:  python-requests-mock
 BuildRequires:  python-crypto
 
 Requires:       python-babel
-Requires:       python-keystoneauth1
+Requires:       python-keystoneauth1 >= 2.18.0
 Requires:       python-keystoneclient
-Requires:       python-mistralclient
-Requires:       python-swiftclient
-Requires:       python-oslo-i18n
-Requires:       python-oslo-utils
+Requires:       python-mistralclient >= 2.0.0
+Requires:       python-swiftclient >= 3.2.0
+Requires:       python-osc-lib >= 1.2.0
+Requires:       python-oslo-i18n >= 2.1.0
+Requires:       python-oslo-utils >= 3.18.0
 Requires:       python-pbr
 Requires:       python-prettytable
 Requires:       python-requests
@@ -89,10 +90,13 @@ BuildRequires:  python3-requests-mock
 BuildRequires:  python3-crypto
 
 Requires:       python3-babel
+Requires:       python3-keystoneauth1 >= 2.18.0
 Requires:       python3-keystoneclient
-Requires:       python3-mistralclient
-Requires:       python3-swiftclient
-Requires:       python3-oslo-utils
+Requires:       python3-mistralclient >= 2.0.0
+Requires:       python3-swiftclient >= 3.2.0
+Requires:       python3-osc-lib >= 1.2.0
+Requires:       python3-oslo-i18n >= 2.1.0
+Requires:       python3-oslo-utils >= 3.18.0
 Requires:       python3-pbr
 Requires:       python3-prettytable
 Requires:       python3-requests
