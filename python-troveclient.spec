@@ -31,7 +31,7 @@ BuildRequires:  python-setuptools
 BuildRequires:  python-sphinx
 BuildRequires:  python-requests
 BuildRequires:  python-pbr
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 BuildRequires:  python-oslotest
 BuildRequires:  python-mock
 BuildRequires:  python-testtools
@@ -73,10 +73,8 @@ implements 100% (or less ;) ) of the Trove API.
 Summary:        Client library for OpenStack DBaaS API
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-sphinx
 BuildRequires:  python3-requests
 BuildRequires:  python3-pbr
-BuildRequires:  python3-oslo-sphinx
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-mock
 BuildRequires:  python3-testtools
@@ -114,7 +112,7 @@ implements 100% (or less ;) ) of the Trove API.
 
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
+%autosetup -n %{name}-%{upstream_version} -S git
 
 # Remove bundled egg-info
 rm -rf %{name}.egg-info
@@ -129,7 +127,7 @@ rm -f {test-,}requirements.txt
 %py3_build
 %endif
 
-%{__python2} setup.py build_sphinx
+%{__python2} setup.py build_sphinx -b html
 
 
 %install
