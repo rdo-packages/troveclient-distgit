@@ -16,6 +16,7 @@ URL:            http://www.openstack.org/
 Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 
 BuildArch:      noarch
+BuildRequires:  git
 
 
 %description
