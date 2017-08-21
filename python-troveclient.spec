@@ -7,8 +7,8 @@
 %endif
 
 Name:           python-troveclient
-Version:        XXX
-Release:        XXX
+Version:        2.12.0
+Release:        1%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
 License:        ASL 2.0
@@ -169,3 +169,6 @@ PYTHONPATH=. %{__python3} setup.py test
 %endif
 
 %changelog
+* Mon Aug 21 2017 Alfredo Moralejo <amoralej@redhat.com> 2.12.0-1
+- Update to 2.12.0
+
