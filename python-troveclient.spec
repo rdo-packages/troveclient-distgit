@@ -86,6 +86,7 @@ BuildRequires:  python3-simplejson
 BuildRequires:  python3-httplib2
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-crypto
+BuildRequires:  openstack-macros
 
 Requires:       python3-babel
 Requires:       python3-keystoneauth1 >= 3.1.0
@@ -117,7 +118,7 @@ implements 100% (or less ;) ) of the Trove API.
 rm -rf %{name}.egg-info
 
 # Let RPM handle the requirements
-rm -f {test-,}requirements.txt
+%py_req_cleanup
 
 
 %build
