@@ -6,6 +6,11 @@
 %global with_python3 0
 %endif
 
+%global common_desc \
+This is a client for the Trove API. There's a Python API (the \
+troveclient module), and a command-line script (trove). Each \
+implements 100% (or less ;) ) of the Trove API.
+
 Name:           python-troveclient
 Version:        XXX
 Release:        XXX
@@ -20,10 +25,7 @@ BuildRequires:  git
 
 
 %description
-This is a client for the Trove API. There's a Python API (the
-troveclient module), and a command-line script (trove). Each
-implements 100% (or less ;) ) of the Trove API.
-
+%{common_desc}
 
 %package -n python2-%{sname}
 Summary:        Client library for OpenStack DBaaS API
@@ -63,9 +65,7 @@ Requires:       python-six
 %{?python_provide:%python_provide python2-%{sname}}
 
 %description -n python2-%{sname}
-This is a client for the Trove API. There's a Python API (the
-troveclient module), and a command-line script (trove). Each
-implements 100% (or less ;) ) of the Trove API.
+%{common_desc}
 
 
 %if 0%{?with_python3}
@@ -104,9 +104,7 @@ Requires:       python3-six
 %{?python_provide:%python_provide python3-%{sname}}
 
 %description -n python3-%{sname}
-This is a client for the Trove API. There's a Python API (the
-troveclient module), and a command-line script (trove). Each
-implements 100% (or less ;) ) of the Trove API.
+%{common_desc}
 %endif
 
 
