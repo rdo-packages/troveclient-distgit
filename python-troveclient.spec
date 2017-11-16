@@ -1,9 +1,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname troveclient
-# FIXME(jpena): we need python3-openstackclient and python3-mistralclient
 %if 0%{?fedora}
-%global with_python3 0
+%global with_python3 1
 %endif
 
 %global common_desc \
@@ -86,7 +85,6 @@ BuildRequires:  python3-simplejson
 BuildRequires:  python3-httplib2
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-crypto
-BuildRequires:  openstack-macros
 
 Requires:       python3-babel
 Requires:       python3-keystoneauth1 >= 3.1.0
@@ -116,7 +114,7 @@ Requires:       python3-six
 rm -rf %{name}.egg-info
 
 # Let RPM handle the requirements
-%py_req_cleanup
+rm -f {test-,}requirements.txt
 
 
 %build
