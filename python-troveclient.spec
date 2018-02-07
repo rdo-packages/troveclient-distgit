@@ -29,37 +29,47 @@ BuildRequires:  git
 %package -n python2-%{sname}
 Summary:        Client library for OpenStack DBaaS API
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-sphinx
-BuildRequires:  python-requests
-BuildRequires:  python-pbr
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-oslotest
-BuildRequires:  python-mock
-BuildRequires:  python-testtools
-BuildRequires:  python-testrepository
-BuildRequires:  python-keystoneauth1
-BuildRequires:  python-keystoneclient
-BuildRequires:  python-mistralclient
-BuildRequires:  python-swiftclient
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-requests
+BuildRequires:  python2-pbr
+BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-mock
+BuildRequires:  python2-testtools
+BuildRequires:  python2-keystoneauth1
+BuildRequires:  python2-keystoneclient
+BuildRequires:  python2-mistralclient
+BuildRequires:  python2-swiftclient
+BuildRequires:  python2-testrepository
+BuildRequires:  python2-crypto
+%if 0%{?fedora} > 0
+BuildRequires:  python2-simplejson
+BuildRequires:  python2-requests-mock
+BuildRequires:  python2-httplib2
+%else
 BuildRequires:  python-simplejson
-BuildRequires:  python-httplib2
 BuildRequires:  python-requests-mock
-BuildRequires:  python-crypto
+BuildRequires:  python-httplib2
+%endif
 
-Requires:       python-babel
-Requires:       python-keystoneauth1 >= 3.1.0
-Requires:       python-keystoneclient
-Requires:       python-mistralclient >= 3.1.0
-Requires:       python-swiftclient >= 3.2.0
-Requires:       python-osc-lib >= 1.7.0
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-utils >= 3.20.0
-Requires:       python-pbr
-Requires:       python-prettytable
-Requires:       python-requests
+Requires:       python2-babel
+Requires:       python2-keystoneauth1 >= 3.3.0
+Requires:       python2-keystoneclient
+Requires:       python2-mistralclient >= 3.1.0
+Requires:       python2-swiftclient >= 3.2.0
+Requires:       python2-osc-lib >= 1.8.0
+Requires:       python2-oslo-i18n >= 3.15.3
+Requires:       python2-oslo-utils >= 3.33.0
+Requires:       python2-pbr
+Requires:       python2-prettytable
+Requires:       python2-requests
+Requires:       python2-six
+%if 0%{?fedora} > 0
+Requires:       python2-simplejson
+%else
 Requires:       python-simplejson
-Requires:       python-six
+%endif
 
 %{?python_provide:%python_provide python2-%{sname}}
 
@@ -87,13 +97,13 @@ BuildRequires:  python3-requests-mock
 BuildRequires:  python3-crypto
 
 Requires:       python3-babel
-Requires:       python3-keystoneauth1 >= 3.1.0
+Requires:       python3-keystoneauth1 >= 3.3.0
 Requires:       python3-keystoneclient
 Requires:       python3-mistralclient >= 3.1.0
 Requires:       python3-swiftclient >= 3.2.0
-Requires:       python3-osc-lib >= 1.7.0
-Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-utils >= 3.20.0
+Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-pbr
 Requires:       python3-prettytable
 Requires:       python3-requests
