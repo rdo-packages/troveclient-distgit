@@ -148,7 +148,7 @@ ln -s ./trove-%{python2_version} %{buildroot}%{_bindir}/trove-2
 ln -s ./trove-2 %{buildroot}%{_bindir}/trove
 
 # generate html docs
-sphinx-build -W -b html doc/source doc/build/html
+sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
