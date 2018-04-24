@@ -178,3 +178,4 @@ PYTHONPATH=. %{__python3} setup.py test
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-troveclient/commit/?id=e30e8db7e7e79e6409c22d4ea8c80e0ff5cc4672
