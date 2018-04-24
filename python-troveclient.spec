@@ -35,6 +35,7 @@ BuildRequires:  python2-requests
 BuildRequires:  python2-pbr
 BuildRequires:  python2-openstackdocstheme
 BuildRequires:  python2-oslotest
+BuildRequires:  python2-sphinxcontrib-apidoc
 BuildRequires:  python2-mock
 BuildRequires:  python2-testtools
 BuildRequires:  python2-keystoneauth1
@@ -133,9 +134,6 @@ rm -f {test-,}requirements.txt
 %py3_build
 %endif
 
-%{__python2} setup.py build_sphinx -b html
-
-
 %install
 %if 0%{?with_python3}
 %py3_install
@@ -149,6 +147,10 @@ ln -s ./trove-%{python2_version} %{buildroot}%{_bindir}/trove-2
 
 ln -s ./trove-2 %{buildroot}%{_bindir}/trove
 
+# generate html docs
+sphinx-build -W -b html doc/source doc/build/html
+# remove the sphinx-build leftovers
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 PYTHONPATH=. %{__python2} setup.py test
