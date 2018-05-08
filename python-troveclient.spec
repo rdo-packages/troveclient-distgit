@@ -1,6 +1,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname troveclient
+%global with_doc 1
 %if 0%{?fedora}
 %global with_python3 1
 %endif
@@ -35,7 +36,9 @@ BuildRequires:  python2-requests
 BuildRequires:  python2-pbr
 BuildRequires:  python2-openstackdocstheme
 BuildRequires:  python2-oslotest
+%if 0%{?with_doc}
 BuildRequires:  python2-sphinxcontrib-apidoc
+%endif
 BuildRequires:  python2-mock
 BuildRequires:  python2-testtools
 BuildRequires:  python2-keystoneauth1
