@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab921fb_b8dc7947",
+        "filename": "python-troveclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2018-05-08T05:33:30Z",
+      "side": 1,
+      "message": "This is not going to work with: with_doc\u003d0.\nWe need to create seperate doc subpackage, move doc BRs in the doc subpackage and add these to with_doc guard.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "2a912d1cc86ab0a9d65e428f59906e8c4cfe5a67",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
