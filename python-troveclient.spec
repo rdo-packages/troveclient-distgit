@@ -55,11 +55,11 @@ BuildRequires:  python-httplib2
 %endif
 
 Requires:       python2-babel
-Requires:       python2-keystoneauth1 >= 3.3.0
+Requires:       python2-keystoneauth1 >= 3.4.0
 Requires:       python2-keystoneclient
 Requires:       python2-mistralclient >= 3.1.0
 Requires:       python2-swiftclient >= 3.2.0
-Requires:       python2-osc-lib >= 1.8.0
+Requires:       python2-osc-lib >= 1.10.0
 Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-oslo-utils >= 3.33.0
 Requires:       python2-pbr
@@ -98,11 +98,11 @@ BuildRequires:  python3-requests-mock
 BuildRequires:  python3-crypto
 
 Requires:       python3-babel
-Requires:       python3-keystoneauth1 >= 3.3.0
+Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-keystoneclient
 Requires:       python3-mistralclient >= 3.1.0
 Requires:       python3-swiftclient >= 3.2.0
-Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-osc-lib >= 1.10.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-pbr
