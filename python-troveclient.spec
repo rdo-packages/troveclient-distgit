@@ -1,6 +1,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname troveclient
+%global with_doc 1
 %if 0%{?fedora}
 %global with_python3 1
 %endif
@@ -30,12 +31,9 @@ BuildRequires:  git
 Summary:        Client library for OpenStack DBaaS API
 BuildRequires:  python2-devel
 BuildRequires:  python2-setuptools
-BuildRequires:  python2-sphinx
 BuildRequires:  python2-requests
 BuildRequires:  python2-pbr
-BuildRequires:  python2-openstackdocstheme
 BuildRequires:  python2-oslotest
-BuildRequires:  python2-sphinxcontrib-apidoc
 BuildRequires:  python2-mock
 BuildRequires:  python2-testtools
 BuildRequires:  python2-keystoneauth1
@@ -52,6 +50,12 @@ BuildRequires:  python2-httplib2
 BuildRequires:  python-simplejson
 BuildRequires:  python-requests-mock
 BuildRequires:  python-httplib2
+%endif
+%if 0%{?with_doc}
+# These are doc requirements
+BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-sphinxcontrib-apidoc
 %endif
 
 Requires:       python2-babel
@@ -147,10 +151,12 @@ ln -s ./trove-%{python2_version} %{buildroot}%{_bindir}/trove-2
 
 ln -s ./trove-2 %{buildroot}%{_bindir}/trove
 
+%if 0%{?with_doc}
 # generate html docs
 sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %check
 PYTHONPATH=. %{__python2} setup.py test
@@ -161,7 +167,9 @@ PYTHONPATH=. %{__python3} setup.py test
 
 
 %files -n python2-%{sname}
+%if 0%{?with_doc}
 %doc doc/build/html README.rst
+%endif
 %license LICENSE
 %{python2_sitelib}/python_troveclient-*.egg-info
 %{python2_sitelib}/troveclient
@@ -170,7 +178,9 @@ PYTHONPATH=. %{__python3} setup.py test
 
 %if 0%{?with_python3}
 %files -n python3-%{sname}
+%if 0%{?with_doc}
 %doc doc/build/html README.rst
+%endif
 %license LICENSE
 %{python3_sitelib}/python_troveclient-*.egg-info
 %{python3_sitelib}/troveclient
