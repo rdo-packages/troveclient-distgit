@@ -128,7 +128,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %check
-PYTHON=%{pyver_bin}
+export PYTHON=%{pyver_bin}
 PYTHONPATH=. %{pyver_bin} setup.py test
 
 
