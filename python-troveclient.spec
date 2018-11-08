@@ -38,6 +38,11 @@ BuildRequires:  git
 
 %package -n python%{pyver}-%{sname}
 Summary:        Client library for OpenStack DBaaS API
+%{?python_provide:%python_provide python%{pyver}-%{sname}}
+%if %{pyver} == 3
+Obsoletes: python2-%{sname} < %{version}-%{release}
+%endif
+
 BuildRequires:  python%{pyver}-devel
 BuildRequires:  python%{pyver}-setuptools
 BuildRequires:  python%{pyver}-requests
@@ -80,8 +85,6 @@ Requires:       python-simplejson
 %else
 Requires:       python%{pyver}-simplejson
 %endif
-
-%{?python_provide:%python_provide python%{pyver}-%{sname}}
 
 %description -n python%{pyver}-%{sname}
 %{common_desc}
