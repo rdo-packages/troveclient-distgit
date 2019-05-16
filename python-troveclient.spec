@@ -7,7 +7,7 @@
 %endif
 
 Name:           python-troveclient
-Version:        2.12.0
+Version:        2.12.1
 Release:        1%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
@@ -169,6 +169,9 @@ PYTHONPATH=. %{__python3} setup.py test
 %endif
 
 %changelog
+* Thu May 16 2019 RDO <dev@lists.rdoproject.org> 2.12.1-1
+- Update to 2.12.1
+
 * Mon Aug 21 2017 Alfredo Moralejo <amoralej@redhat.com> 2.12.0-1
 - Update to 2.12.0
 
