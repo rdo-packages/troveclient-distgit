@@ -55,7 +55,6 @@ BuildRequires:  python%{pyver}-keystoneclient
 BuildRequires:  python%{pyver}-mistralclient
 BuildRequires:  python%{pyver}-swiftclient
 BuildRequires:  python%{pyver}-testrepository
-BuildRequires:  python%{pyver}-crypto
 # Handle python2 exception
 %if %{pyver} == 2
 BuildRequires:  python-simplejson
