@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -36,56 +25,40 @@ BuildRequires:  git
 %description
 %{common_desc}
 
-%package -n python%{pyver}-%{sname}
+%package -n python3-%{sname}
 Summary:        Client library for OpenStack DBaaS API
-%{?python_provide:%python_provide python%{pyver}-%{sname}}
-%if %{pyver} == 3
+%{?python_provide:%python_provide python3-%{sname}}
 Obsoletes: python2-%{sname} < %{version}-%{release}
-%endif
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-setuptools
-BuildRequires:  python%{pyver}-requests
-BuildRequires:  python%{pyver}-pbr
-BuildRequires:  python%{pyver}-oslotest
-BuildRequires:  python%{pyver}-mock
-BuildRequires:  python%{pyver}-testtools
-BuildRequires:  python%{pyver}-keystoneauth1
-BuildRequires:  python%{pyver}-keystoneclient
-BuildRequires:  python%{pyver}-mistralclient
-BuildRequires:  python%{pyver}-swiftclient
-BuildRequires:  python%{pyver}-testrepository
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires:  python-simplejson
-BuildRequires:  python-requests-mock
-BuildRequires:  python-httplib2
-%else
-BuildRequires:  python%{pyver}-simplejson
-BuildRequires:  python%{pyver}-requests-mock
-BuildRequires:  python%{pyver}-httplib2
-%endif
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-requests
+BuildRequires:  python3-pbr
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-mock
+BuildRequires:  python3-testtools
+BuildRequires:  python3-keystoneauth1
+BuildRequires:  python3-mistralclient
+BuildRequires:  python3-swiftclient
+BuildRequires:  python3-testrepository
+BuildRequires:  python3-simplejson
+BuildRequires:  python3-requests-mock
+BuildRequires:  python3-httplib2
 
-Requires:       python%{pyver}-babel
-Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
-Requires:       python%{pyver}-keystoneclient
-Requires:       python%{pyver}-mistralclient >= 3.1.0
-Requires:       python%{pyver}-swiftclient >= 3.2.0
-Requires:       python%{pyver}-osc-lib >= 1.10.0
-Requires:       python%{pyver}-oslo-i18n >= 3.15.3
-Requires:       python%{pyver}-oslo-utils >= 3.33.0
-Requires:       python%{pyver}-pbr
-Requires:       python%{pyver}-prettytable
-Requires:       python%{pyver}-requests
-Requires:       python%{pyver}-six
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:       python-simplejson
-%else
-Requires:       python%{pyver}-simplejson
-%endif
+Requires:       python3-babel
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-mistralclient >= 3.1.0
+Requires:       python3-swiftclient >= 3.2.0
+Requires:       python3-osc-lib >= 1.10.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-utils >= 3.33.0
+Requires:       python3-pbr
+Requires:       python3-prettytable
+Requires:       python3-requests
+Requires:       python3-six
+Requires:       python3-simplejson
 
-%description -n python%{pyver}-%{sname}
+%description -n python3-%{sname}
 %{common_desc}
 
 
@@ -93,9 +66,9 @@ Requires:       python%{pyver}-simplejson
 %package doc
 Summary:        Documentation for troveclient
 # These are doc requirements
-BuildRequires:  python%{pyver}-openstackdocstheme
-BuildRequires:  python%{pyver}-sphinx
-BuildRequires:  python%{pyver}-sphinxcontrib-apidoc
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinx
+BuildRequires:  python3-sphinxcontrib-apidoc
 %description doc
 %{common_desc}
 
@@ -113,33 +86,33 @@ rm -f {test-,}requirements.txt
 
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %install
-%{pyver_install}
+%{py3_install}
 
 # Create a versioned binary for backwards compatibility until everything is pure py3
-ln -s trove %{buildroot}%{_bindir}/trove-%{pyver}
+ln -s trove %{buildroot}%{_bindir}/trove-3
 
 
 %if 0%{?with_doc}
 # generate html docs
-sphinx-build-%{pyver} -b html doc/source doc/build/html
-# remove the sphinx-build-%{pyver} leftovers
+sphinx-build -b html doc/source doc/build/html
+# remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %check
-export PYTHON=%{pyver_bin}
-PYTHONPATH=. %{pyver_bin} setup.py test
+export PYTHON=%{__python3}
+PYTHONPATH=. %{__python3} setup.py test
 
 
-%files -n python%{pyver}-%{sname}
+%files -n python3-%{sname}
 %doc README.rst
 %license LICENSE
-%{pyver_sitelib}/python_troveclient-*.egg-info
-%{pyver_sitelib}/troveclient
-%{_bindir}/trove-%{pyver}
+%{python3_sitelib}/python_troveclient-*.egg-info
+%{python3_sitelib}/troveclient
+%{_bindir}/trove-3
 %{_bindir}/trove
 
 %if 0%{?with_doc}
