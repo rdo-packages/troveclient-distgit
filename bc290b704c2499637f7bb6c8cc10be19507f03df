@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "834ad389_ef02a001",
+        "filename": "python-troveclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2020-04-17T18:35:08Z",
+      "side": 1,
+      "message": "keystoneclient can be removed https://github.com/openstack/python-troveclient/commit/fff88e0a9c58eb495df03721b084e470584d7492#diff-b4ef698db8ca845e5845c4618278f29a",
+      "range": {
+        "startLine": 51,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "bc290b704c2499637f7bb6c8cc10be19507f03df",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
