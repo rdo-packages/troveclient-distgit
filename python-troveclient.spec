@@ -21,7 +21,7 @@ troveclient module), and a command-line script (trove). Each \
 implements 100% (or less ;) ) of the Trove API.
 
 Name:           python-troveclient
-Version:        3.0.0
+Version:        3.0.1
 Release:        1%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
@@ -149,6 +149,9 @@ PYTHONPATH=. %{pyver_bin} setup.py test
 %endif
 
 %changelog
+* Fri Sep 18 2020 RDO <dev@lists.rdoproject.org> 3.0.1-1
+- Update to 3.0.1
+
 * Mon Sep 23 2019 RDO <dev@lists.rdoproject.org> 3.0.0-1
 - Update to 3.0.0
 
