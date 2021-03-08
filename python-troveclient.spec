@@ -58,7 +58,6 @@ BuildRequires:  python3-simplejson
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-httplib2
 
-Requires:       python3-babel
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-mistralclient >= 3.1.0
 Requires:       python3-swiftclient >= 3.2.0
@@ -68,7 +67,6 @@ Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-pbr
 Requires:       python3-prettytable
 Requires:       python3-requests
-Requires:       python3-six
 Requires:       python3-simplejson
 
 %description -n python3-%{sname}
