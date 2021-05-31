@@ -52,6 +52,7 @@ BuildRequires:  python3-mock
 BuildRequires:  python3-testtools
 BuildRequires:  python3-keystoneauth1
 BuildRequires:  python3-mistralclient
+BuildRequires:  python3-openstackclient
 BuildRequires:  python3-swiftclient
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-simplejson
@@ -60,6 +61,7 @@ BuildRequires:  python3-httplib2
 
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-mistralclient >= 3.1.0
+Requires:       python3-openstackclient >= 3.12.0
 Requires:       python3-swiftclient >= 3.2.0
 Requires:       python3-osc-lib >= 1.10.0
 Requires:       python3-oslo-i18n >= 3.15.3
