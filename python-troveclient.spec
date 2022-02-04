@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0x01527a34f0d0080f8a5db8d6eb6c5df21b4b6363
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -12,8 +12,8 @@ troveclient module), and a command-line script (trove). Each \
 implements 100% (or less ;) ) of the Trove API.
 
 Name:           python-troveclient
-Version:        5.1.1
-Release:        2%{?dist}
+Version:        5.1.2
+Release:        1%{?dist}
 Summary:        Client library for OpenStack DBaaS API
 
 License:        ASL 2.0
@@ -139,6 +139,9 @@ PYTHONPATH=. %{__python3} setup.py test
 %endif
 
 %changelog
+* Fri Feb 04 2022 RDO <dev@lists.rdoproject.org> 5.1.2-1
+- Update to 5.1.2
+
 * Wed Oct 21 2020 Joel Capitao <jcapitao@redhat.com> 5.1.1-2
 - Enable sources tarball validation using GPG signature.
 
