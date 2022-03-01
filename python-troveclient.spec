@@ -63,7 +63,7 @@ Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-mistralclient >= 3.1.0
 Requires:       python3-openstackclient >= 3.12.0
 Requires:       python3-swiftclient >= 3.2.0
-Requires:       python3-osc-lib >= 1.10.0
+Requires:       python3-osc-lib >= 1.8.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-pbr
